@@ -15,7 +15,7 @@ public class EnemyController : MonoBehaviour {
     void Start() {
         //Žõ–½4•b
         Destroy(gameObject, 4f);
-        span = Random.Range(1, 3);
+        span = Random.Range(0, 3);
         random = Random.Range(0, 10);
     }
 
