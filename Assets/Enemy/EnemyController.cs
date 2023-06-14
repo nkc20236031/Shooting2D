@@ -1,28 +1,71 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour {
-    [SerializeField] private float speed;   //移動速度
-    Vector3 dir = Vector3.zero;             //移動方向
+    public ExplosionController Explosion;
+    [SerializeField] private GameObject EnemyShot;
+    Vector3 dir = Vector3.zero; //移動方向
+    float speed = 5;            //移動速度
+    float span;
+    float delta;
+    int random;
 
     void Start() {
         //寿命4秒
         Destroy(gameObject, 4f);
+        span = Random.Range(1, 3);
+        random = Random.Range(0, 10);
     }
 
     void Update() {
         //移動方向を決定
         dir = Vector3.left;
+
+        //上下運動
+        if (random < 4) dir.y = Mathf.Sin(speed * Time.time);
+
         //現在地に移動量を加算
         transform.position += dir.normalized * speed * Time.deltaTime;
+
+        //敵弾
+        delta += Time.deltaTime;
+        if (delta > span) {
+            delta = 0;
+            GameObject go = Instantiate(EnemyShot);
+            go.transform.position = transform.position;
+            span = Random.Range(1, 3);
+        }
     }
 
     void OnTriggerEnter2D(Collider2D collision) {
-        //制限時間を10秒減らす
-        GameDirector.LastTime -= 10f;
+        GameObject obj = collision.gameObject;
 
-        //何かのオブジェクトに重なったら消去
-        Destroy(gameObject);
+        if (obj.tag == "Player" || obj.tag == "MyShot") {
+            //プレイヤーに当たったら-1000km減らす
+            if (obj.tag == "Player") {
+                GameDirector.kyori -= 1000;
+            } else {
+                Destroy(obj);
+                //倒したら+200km増やす
+                GameDirector.kyori += 200;
+            }
+
+            //消去時にエフェクトを出す
+            Instantiate(Explosion, transform.localPosition, Quaternion.identity);
+            //何か他のオブジェクトと重なったら消去
+            Destroy(gameObject);
+        }
     }
 }
+
+
+
+
+
+
+
+
+
+
