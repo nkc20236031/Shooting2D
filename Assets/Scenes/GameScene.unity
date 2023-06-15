@@ -1056,8 +1056,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bac6d7664a457d44aa50b6e14f674069, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  kyoriLabel: {fileID: 2041923730}
   timeGauge: {fileID: 1764946872}
+  kyoriLabel: {fileID: 2041923730}
+  lastTime: 100
 --- !u!4 &2070711740
 Transform:
   m_ObjectHideFlags: 0

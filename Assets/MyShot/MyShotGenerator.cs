@@ -18,9 +18,8 @@ public class MyShotGenerator : MonoBehaviour {
     void Update() {
         //レベルチート
         if (Input.GetKeyDown(KeyCode.C)) {
-            if (level < 12) {
-                level++;
-            } else {
+            level++;
+            if (level > 12) {
                 level = 0;
             }
         }

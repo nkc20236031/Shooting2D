@@ -5,11 +5,11 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class TitleDirector : MonoBehaviour {
-    
+    [SerializeField] Text Score;
+
     void Start() {
         //ÉXÉRÉA(km)
-        GameObject Score = GameObject.Find("Score");
-        Score.GetComponent<Text>().text = ($"Score\n{GameDirector.kyori.ToString("D6")}");
+        Score.text = ($"Score\n{GameDirector.kyori.ToString("D6")}");
         GameDirector.kyori = 0;
     }
 
