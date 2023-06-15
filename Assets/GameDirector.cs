@@ -15,6 +15,7 @@ public class GameDirector : MonoBehaviour {
     void Start() {
         kyori = 0;
         lastTime = 100f;        //Žc‚èŽžŠÔ100•b
+        Application.targetFrameRate = 60;
     }
 
     void Update() {

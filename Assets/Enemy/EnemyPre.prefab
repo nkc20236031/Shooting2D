@@ -123,9 +123,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Explosion: {fileID: -6631889839103868906, guid: ea99876accd65de43bc220a160596476, type: 3}
   EnemyShot: {fileID: 2650534768955526940, guid: a79f877f6b75380458ed9d180f68b016, type: 3}
-  span: 2
-  move: 2
-  max: 150
 --- !u!50 &1059816986448892224
 Rigidbody2D:
   serializedVersion: 4

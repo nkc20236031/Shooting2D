@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour {
     void Start() {
         //アニメーターコンポーネントの情報を保存
         anim = GetComponent<Animator>();
-        speed = 5f;
+        speed = 10f;
     }
 
     void Update() {

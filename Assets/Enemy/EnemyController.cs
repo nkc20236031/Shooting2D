@@ -7,7 +7,7 @@ public class EnemyController : MonoBehaviour {
     public ExplosionController Explosion;
     [SerializeField] private GameObject EnemyShot;
     Vector3 dir = Vector3.zero; //ˆÚ“®•ûŒü
-    float speed = 5;            //ˆÚ“®‘¬“x
+    float speed;            //ˆÚ“®‘¬“x
     float span;
     float delta;
     int random;
@@ -15,8 +15,9 @@ public class EnemyController : MonoBehaviour {
     void Start() {
         //õ–½4•b
         Destroy(gameObject, 4f);
-        span = Random.Range(0, 3);
+        span = Random.Range(1, 3);
         random = Random.Range(0, 10);
+        speed = 5;
     }
 
     void Update() {
@@ -24,7 +25,7 @@ public class EnemyController : MonoBehaviour {
         dir = Vector3.left;
 
         //ã‰º‰^“®
-        if (random < 4) dir.y = Mathf.Sin(speed * Time.time);
+        if (random < 3) dir.y = Mathf.Sin(speed * Time.time);
 
         //Œ»İ’n‚ÉˆÚ“®—Ê‚ğ‰ÁZ
         transform.position += dir.normalized * speed * Time.deltaTime;

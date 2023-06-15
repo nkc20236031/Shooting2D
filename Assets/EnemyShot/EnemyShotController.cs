@@ -9,6 +9,8 @@ public class EnemyShotController : MonoBehaviour {
 
     void Start() {
         Destroy(gameObject, 4);
+
+        //ƒvƒŒƒCƒ„[‚Ì‚Ù‚¤‚ÉŒü‚©‚¤
         player = GameObject.Find("Player");
         dir = player.transform.position - transform.position;
     }

@@ -7,6 +7,7 @@ public class BonusController : MonoBehaviour {
     int random;
 
     void Start() {
+        //マテリアル（色）変更
         Material mat = GetComponent<Renderer>().material;
         random = Random.Range(0, 3);
         switch (random) {
@@ -38,16 +39,19 @@ public class BonusController : MonoBehaviour {
         }
     }
 
+    //ショットUP
     void Red() {
         MyShotGenerator.level++;
     }
 
+    //スピードUP
     void Green() {
-        PlayerController.speed += (PlayerController.speed < 10)? 1:0;
+        PlayerController.speed += (PlayerController.speed < 20)? 2:0;
     }
 
+    //性能ダウン
     void Blue() {
         MyShotGenerator.level = 0;
-        PlayerController.speed = 5;
+        PlayerController.speed = 10;
     }
 }
