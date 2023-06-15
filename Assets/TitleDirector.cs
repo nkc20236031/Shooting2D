@@ -10,7 +10,6 @@ public class TitleDirector : MonoBehaviour {
     void Start() {
         //ÉXÉRÉA(km)
         Score.text = ($"Score\n{GameDirector.kyori.ToString("D6")}");
-        GameDirector.kyori = 0;
     }
 
     void Update() {

@@ -9,7 +9,7 @@ public class BonusGenerator : MonoBehaviour {
 
     void Update() {
         delta += Time.deltaTime;
-        if (delta > span) {
+        if (delta > span && GameDirector.kyori > 500) {
             delta = 0;
             GameObject go = Instantiate(Bonus);
             float py = Random.Range(-9f, 10f);

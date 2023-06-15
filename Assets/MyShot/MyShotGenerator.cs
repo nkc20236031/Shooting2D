@@ -33,13 +33,15 @@ public class MyShotGenerator : MonoBehaviour {
             for (int i = 0; i < level + 1; i++) {
                 GameObject go = Instantiate(myShot);
                 go.transform.position = player.transform.position + new Vector3(0.5f, 0, 0);
-                go.transform.eulerAngles = new Vector3(0, 0, -90 + (15f * i));
+                Vector3 r = transform.root.eulerAngles + new Vector3(0, 0, -90 + (15f * i));
+                go.transform.rotation = Quaternion.Euler(r);
             }
             for (int i = 1; i <= level; i++) {
                 if (i < 12) {
                     GameObject go = Instantiate(myShot);
                     go.transform.position = player.transform.position + new Vector3(0.5f, 0, 0);
-                    go.transform.eulerAngles = new Vector3(0, 0, -90 + (-15f * i));
+                    Vector3 r = transform.root.eulerAngles + new Vector3(0, 0, -90 + (-15f * i));
+                    go.transform.rotation = Quaternion.Euler(r);
                 }
             }
         }
