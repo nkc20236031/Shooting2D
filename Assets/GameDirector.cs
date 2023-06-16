@@ -5,14 +5,15 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class GameDirector : MonoBehaviour {
-    [SerializeField] Image timeGauge;   //タイムゲージを表示するUI-Imageオブジェクトを保存
-    [SerializeField] Text kyoriLabel;   //距離を表示するUI-Textオブジェクトを保存
-    [SerializeField] float lastTime;    //残り時間を保存する変数
-    public static int kyori;            //距離を保存する変数
+    [SerializeField] Image timeGauge;           //タイムゲージを表示するUI-Imageオブジェクトを保存
+    [SerializeField] Text kyoriLabel;           //距離を表示するUI-Textオブジェクトを保存
+    public static int kyori;                    //距離を保存する変数
+    float lastTime;                             //残り時間を保存する変数
 
     void Start() {
         Application.targetFrameRate = 60;       //フレームレート(60)
         kyori = 0;
+        lastTime = 100f;                        //残り時間
     }
 
     void Update() {
@@ -20,7 +21,7 @@ public class GameDirector : MonoBehaviour {
         lastTime -= Time.deltaTime;
         timeGauge.fillAmount = lastTime / 100f;
 
-        //残り時間が０になったらリロード
+        //残り時間が０になったらタイトルシーンに移動
         if(lastTime < 0) {
             SceneManager.LoadScene("TitleScene");
         }

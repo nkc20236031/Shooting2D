@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MyShotController : MonoBehaviour {
-    [SerializeField] private float speed;
+    float speed;
 
     void Start () {
-        Destroy(gameObject, 4f);
+        speed = 10f;
+
+        Destroy(gameObject, 2f);
     }
 
     void Update() {

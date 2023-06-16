@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyShotController : MonoBehaviour {
-    [SerializeField] private float speed;
     GameObject player;
-    Vector3 dir = Vector3.zero; //ˆÚ“®•ûŒü
+    Vector3 dir = Vector3.zero;     //ˆÚ“®•ûŒü
+    float speed;
 
     void Start() {
+        speed = 10f;
+
         Destroy(gameObject, 4);
 
         //ƒvƒŒƒCƒ„[‚Ì‚Ù‚¤‚ÉŒü‚©‚¤
@@ -22,6 +24,7 @@ public class EnemyShotController : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D collision) {
         GameObject obj = collision.gameObject;
         if (obj.tag == "Player") {
+            //“G’e‚É“–‚½‚Á‚½‚ç-500km
             GameDirector.kyori -= 500;
             Destroy(gameObject);
         }

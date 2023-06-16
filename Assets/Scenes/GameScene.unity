@@ -327,7 +327,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Bonus: {fileID: 5059674022044301124, guid: ade5b761bec75cd40b6111450a9b0a77, type: 3}
-  span: 5
 --- !u!4 &1026898047
 Transform:
   m_ObjectHideFlags: 0
@@ -836,7 +835,6 @@ MonoBehaviour:
   myShot: {fileID: 5412529035795145525, guid: 972d216141e39d246a5a3fd1e3d6b166, type: 3}
   player: {fileID: 1700465165}
   shotLevel: {fileID: 1886057328}
-  span: 0.25
 --- !u!4 &1803866455
 Transform:
   m_ObjectHideFlags: 0
@@ -923,7 +921,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'ShotLevel: 0'
+  m_Text: 'ShotLevel: 00'
 --- !u!222 &1886057329
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1058,7 +1056,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeGauge: {fileID: 1764946872}
   kyoriLabel: {fileID: 2041923730}
-  lastTime: 100
 --- !u!4 &2070711740
 Transform:
   m_ObjectHideFlags: 0

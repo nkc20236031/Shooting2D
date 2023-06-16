@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
     public static float speed;
-    Vector3 dir = Vector3.zero; //移動方向を保存する変数
-
-    Animator anim;//アニメーターコンポーネントの情報を保存する変数
+    Vector3 dir = Vector3.zero;     //移動方向を保存する変数
+    Animator anim;                  //アニメーターコンポーネントの情報を保存する変数
 
     void Start() {
         //アニメーターコンポーネントの情報を保存

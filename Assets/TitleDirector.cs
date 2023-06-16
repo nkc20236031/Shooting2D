@@ -5,11 +5,15 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class TitleDirector : MonoBehaviour {
-    [SerializeField] Text Score;
+    [SerializeField] Text Score;    //スコアを表示するするUI-Textオブジェクトを保存
 
     void Start() {
-        //スコア(km)
-        Score.text = ($"Score\n{GameDirector.kyori.ToString("D6")}");
+        //スコアの表示
+        string ScoreRec = GameDirector.kyori.ToString("D6");
+        Score.text = (
+            $"Score\n" +
+            $"{ScoreRec}"
+        );
     }
 
     void Update() {

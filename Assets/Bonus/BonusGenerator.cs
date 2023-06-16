@@ -3,11 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BonusGenerator : MonoBehaviour {
-    public GameObject Bonus;
-    [SerializeField] private float span;
+    [SerializeField] GameObject Bonus;
+    float span;
     float delta;
 
+    void Start() {
+        span = 5f;
+        delta = 0f;
+    }
+
     void Update() {
+        //パワーアップ玉を生成する（スコアが500km以上の場合）
         delta += Time.deltaTime;
         if (delta > span && GameDirector.kyori > 500) {
             delta = 0;
