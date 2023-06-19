@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class TitleDirector : MonoBehaviour {
     [SerializeField] Text Score;    //スコアを表示するするUI-Textオブジェクトを保存

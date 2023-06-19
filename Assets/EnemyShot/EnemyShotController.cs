@@ -10,7 +10,7 @@ public class EnemyShotController : MonoBehaviour {
     void Start() {
         speed = 10f;
 
-        Destroy(gameObject, 4);
+        Destroy(gameObject, 4f);
 
         //ƒvƒŒƒCƒ„[‚Ì‚Ù‚¤‚ÉŒü‚©‚¤
         player = GameObject.Find("Player");

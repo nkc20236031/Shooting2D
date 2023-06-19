@@ -4,13 +4,8 @@ using UnityEngine;
 
 public class EnemyGenerator : MonoBehaviour {
     [SerializeField] GameObject enemyPre;   //敵のプレハブを保存する変数
-    float span;                             //敵を出す間隔（秒）を保存する変数
-    float delta;                            //経過時間計算用
-
-    void Start() {
-        span  = 1f;
-        delta = 0;
-    }
+    float span = 1;                             //敵を出す間隔（秒）を保存する変数
+    float delta = 0;                            //経過時間計算用
 
     void Update() {
         //経過時間を加算
@@ -29,13 +24,3 @@ public class EnemyGenerator : MonoBehaviour {
         }
     }
 }
-
-
-
-
-
-
-
-
-
-

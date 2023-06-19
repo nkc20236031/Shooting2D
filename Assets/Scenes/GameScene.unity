@@ -256,8 +256,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.00054932, y: -0.000015259}
-  m_SizeDelta: {x: 1395.1, y: 720}
+  m_AnchoredPosition: {x: 0.43396002, y: -0.000015259}
+  m_SizeDelta: {x: 1396, y: 720}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &572698349
 MonoBehaviour:
@@ -297,51 +297,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 572698347}
   m_CullTransparentMesh: 1
---- !u!1 &1026898045
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1026898047}
-  - component: {fileID: 1026898046}
-  m_Layer: 0
-  m_Name: BonusGenerator
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1026898046
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1026898045}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73f013a944261fa4db1bbce8b18c199d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Bonus: {fileID: 5059674022044301124, guid: ade5b761bec75cd40b6111450a9b0a77, type: 3}
---- !u!4 &1026898047
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1026898045}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.10834184, y: 0.64810765, z: 0.014028776}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1320894607
 GameObject:
   m_ObjectHideFlags: 0
@@ -576,6 +531,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b14de2859ee02541a8bc41454c31b52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myShot: {fileID: 5412529035795145525, guid: 972d216141e39d246a5a3fd1e3d6b166, type: 3}
+  shotLevel: {fileID: 1886057328}
 --- !u!61 &1700465170
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -803,53 +760,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 1, y: 1}
---- !u!1 &1803866453
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1803866455}
-  - component: {fileID: 1803866454}
-  m_Layer: 0
-  m_Name: MyShotGenerator
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1803866454
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1803866453}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52a400f20bf5d534a80a482502c3c365, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myShot: {fileID: 5412529035795145525, guid: 972d216141e39d246a5a3fd1e3d6b166, type: 3}
-  player: {fileID: 1700465165}
-  shotLevel: {fileID: 1886057328}
---- !u!4 &1803866455
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1803866453}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.28945306, y: -0.13775042, z: 0.045720372}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1886057326
 GameObject:
   m_ObjectHideFlags: 0
@@ -982,7 +892,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u9032\u3093\u3060\u8DDD\u96E2"
+  m_Text: 'Score: 000000'
 --- !u!114 &2041923731
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1054,6 +964,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bac6d7664a457d44aa50b6e14f674069, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bonus: {fileID: 5059674022044301124, guid: ade5b761bec75cd40b6111450a9b0a77, type: 3}
   timeGauge: {fileID: 1764946872}
   kyoriLabel: {fileID: 2041923730}
 --- !u!4 &2070711740

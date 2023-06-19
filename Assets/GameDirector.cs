@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class GameDirector : MonoBehaviour {
+    [SerializeField] GameObject bonus;
     [SerializeField] Image timeGauge;           //タイムゲージを表示するUI-Imageオブジェクトを保存
     [SerializeField] Text kyoriLabel;           //距離を表示するUI-Textオブジェクトを保存
     public static int kyori;                    //距離を保存する変数
@@ -31,6 +32,12 @@ public class GameDirector : MonoBehaviour {
             kyori = 0;
         }
         kyori++;
-        kyoriLabel.text = ($"{kyori.ToString("D6")}km");
+        kyoriLabel.text = ($"Score: {kyori.ToString("D6")}");
+
+        if (kyori % 600 == 0) {
+            GameObject go = Instantiate(bonus);
+            float py = Random.Range(-9f, 10f);
+            go.transform.position = new Vector3(py, 7, 0);
+        }
     }
 }

@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour {
@@ -11,13 +10,15 @@ public class EnemyController : MonoBehaviour {
     float span;
     float delta;
     float speed;                                //à⁄ìÆë¨ìx
+    float rad;
 
     void Start() {
-        Destroy(gameObject, 4f);
+        Destroy(gameObject, 5f);
 
         random = Random.Range(0, 10);
-        span = Random.Range(1, 3);
-        speed = 5;
+        span = 2f;
+        speed = 5f;
+        rad = Time.time;
     }
 
     void Update() {
@@ -26,7 +27,7 @@ public class EnemyController : MonoBehaviour {
 
         //è„â∫â^ìÆ
         if (random < 3) {
-            dir.y = Mathf.Sin(speed * Time.time);
+            dir.y = Mathf.Sin(rad + Time.time * speed);
         }
 
         //åªç›ínÇ…à⁄ìÆó Çâ¡éZ
@@ -36,11 +37,7 @@ public class EnemyController : MonoBehaviour {
         delta += Time.deltaTime;
         if (delta > span) {
             delta = 0;
-
-            //ìGíeÇê∂ê¨Ç∑ÇÈ
-            GameObject go = Instantiate(EnemyShot);
-            go.transform.position = transform.position;
-            span = Random.Range(1, 3);
+            Instantiate(EnemyShot, transform.position, transform.rotation);
         }
     }
 
@@ -67,13 +64,3 @@ public class EnemyController : MonoBehaviour {
         }
     }
 }
-
-
-
-
-
-
-
-
-
-

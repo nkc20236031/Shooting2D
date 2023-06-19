@@ -1,19 +1,55 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour {
-    public static float speed;
-    Vector3 dir = Vector3.zero;     //移動方向を保存する変数
+    [SerializeField] GameObject myShot;
+    [SerializeField] Text shotLevel;
     Animator anim;                  //アニメーターコンポーネントの情報を保存する変数
+    Vector3 dir = Vector3.zero;     //移動方向を保存する変数
+    public static float speed;
+    public static int level;
+    float span;
+    float delta;
 
     void Start() {
         //アニメーターコンポーネントの情報を保存
         anim = GetComponent<Animator>();
         speed = 10f;
+        level = 0;
+        span = 0.5f;
+        delta = 0;
     }
 
     void Update() {
+        //レベル変更
+        if (Input.GetKeyDown(KeyCode.C)) {
+            level++;
+            if (level == 13) {
+                level = 0;
+            }
+        }
+        shotLevel.text = ($"ShotLevel: {level.ToString("D2")}");
+
+        //弾を生成する
+        delta += Time.deltaTime;
+        if (delta > span && Input.GetKey(KeyCode.Z)) {
+            delta = 0f;
+            //レベルによって出す弾数
+            for (int i = -level; i < level + 1; i++) {
+                //プレイヤーの現在地を取得
+                Vector3 p = transform.position;
+
+                //プレイヤーの回転角度を取得
+                Quaternion rot = Quaternion.identity;
+                rot.eulerAngles = transform.rotation.eulerAngles + new Vector3(0, 0, 15f * i);
+
+                //現在地と角度をセット
+                Instantiate(myShot, p, rot);
+            }
+        }
+
         //移動方向をセット
         dir.x = Input.GetAxisRaw("Horizontal");
         dir.y = Input.GetAxisRaw("Vertical");
@@ -36,6 +72,3 @@ public class PlayerController : MonoBehaviour {
         }
     }
 }
-
-
-
