@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BonusController : MonoBehaviour {
+    public Speed Speedup;
+    public Strength Strengthup;
     int random;
     float speed;
 
@@ -33,9 +35,11 @@ public class BonusController : MonoBehaviour {
         switch (num) {
             case 0:     //ショットUP
                 PlayerController.level += (PlayerController.level == 12) ? 0 : 1;
+                Instantiate(Strengthup, transform.localPosition, Quaternion.identity);
                 break;
             case 1:     //スピードUP
-                PlayerController.speed += (PlayerController.speed < 20) ? 2 : 0;
+                PlayerController.speed = 15;
+                Instantiate(Speedup, transform.localPosition, Quaternion.identity);
                 break;
             case 2:     //性能ダウン
                 PlayerController.level = 0;

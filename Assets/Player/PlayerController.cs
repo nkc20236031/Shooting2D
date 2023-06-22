@@ -18,7 +18,7 @@ public class PlayerController : MonoBehaviour {
         anim = GetComponent<Animator>();
         speed = 10f;
         level = 0;
-        span = 0.5f;
+        span = 0.25f;
         delta = 0;
     }
 
