@@ -30,8 +30,8 @@ Transform:
   m_GameObject: {fileID: 8546898638648515846}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 2.5, y: 2.5, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 659339777, guid: 37ab020273464ee4c8a8df3f5827991e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -158,7 +158,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbdedd851c9c3e441adb9ba61e20eac5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EneDam: {fileID: 670916981006384079, guid: 7f1a4c506b0ed3c4690860fa7a431c49, type: 3}
   Explosion: {fileID: -6631889839103868906, guid: ea99876accd65de43bc220a160596476, type: 3}
-  Collision: {fileID: 2716018283591256091, guid: 930f57889c5036e4da7d4780cdb893de, type: 3}
   EnemyShot: {fileID: 2650534768955526940, guid: a79f877f6b75380458ed9d180f68b016, type: 3}

@@ -26,6 +26,7 @@ public class EnemyShotController : MonoBehaviour {
         if (obj.tag == "Player") {
             //“G’e‚É“–‚½‚Á‚½‚ç-500km
             GameDirector.kyori -= 500;
+            GameDirector.hp -= 2.5f;
             Destroy(gameObject);
         }
     }

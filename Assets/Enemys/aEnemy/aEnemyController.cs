@@ -1,11 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class aEnemyController : MonoBehaviour {
     public EffectController Explosion;
-    public EffectController Collision;
     [SerializeField] GameObject EnemyShot;
     GameObject player;
     int attack;
@@ -28,7 +26,8 @@ public class aEnemyController : MonoBehaviour {
             switch (obj.tag) {
                 case "Player":
                     //敵に当たったら-1000km減らす
-                    GameDirector.kyori -= 1500;
+                    GameDirector.kyori -= 1000;
+                    GameDirector.hp -= 10;
 
                     Destroy(gameObject);
                     break;
@@ -38,6 +37,7 @@ public class aEnemyController : MonoBehaviour {
                     //5回攻撃が当たったら
                     if (attack == 5) {
                         //消去時にエフェクトを出す
+                        Explosion.transform.localScale = new Vector3(2.5f, 2.5f, 0);
                         Instantiate(Explosion, transform.localPosition, Quaternion.identity);
 
                         //何か他のオブジェクトと重なったら消去

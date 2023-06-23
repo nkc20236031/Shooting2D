@@ -41,9 +41,10 @@ public class BonusController : MonoBehaviour {
                 PlayerController.speed = 15;
                 Instantiate(Speedup, transform.localPosition, Quaternion.identity);
                 break;
-            case 2:     //性能ダウン
-                PlayerController.level = 0;
+            case 2:     //性能ダウン＆hp回復
+                PlayerController.level -= (PlayerController.level == 0) ? 0 : 1;
                 PlayerController.speed = 10;
+                GameDirector.hp += 10;
                 break;
         }
     }

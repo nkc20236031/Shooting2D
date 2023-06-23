@@ -3,12 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyGenerator : MonoBehaviour {
-    [SerializeField] GameObject aEnemyPre;
     [SerializeField] GameObject EnemyPre;       //“G‚ÌƒvƒŒƒnƒu‚ð•Û‘¶‚·‚é•Ï”
+    [SerializeField] GameObject aEnemyPre;
+    [SerializeField] GameObject BossEnemyPre;
     GameObject go;
-    float span = 2;                             //“G‚ðo‚·ŠÔŠui•bj‚ð•Û‘¶‚·‚é•Ï”
+    float span = 1.5f;                          //“G‚ðo‚·ŠÔŠui•bj‚ð•Û‘¶‚·‚é•Ï”
     float delta = 0;                            //Œo‰ßŽžŠÔŒvŽZ—p
     int random;
+    bool boss;
+
+    void Start () {
+        boss = false;
+    }
 
     void Update() {
         //Œo‰ßŽžŠÔ‚ð‰ÁŽZ
@@ -29,6 +35,12 @@ public class EnemyGenerator : MonoBehaviour {
 
             //“G‚ðo‚·ŠÔŠu‚ð™X‚É’Z‚­‚·‚é
             span -= (span > 0.25f)? 0.01f : 0f;
+        }
+
+        if (GameDirector.kyori > 10000 && boss == false) {
+            boss = true;
+            go = Instantiate(BossEnemyPre);
+            go.transform.position = new Vector3(12, 0, 0);
         }
     }
 }

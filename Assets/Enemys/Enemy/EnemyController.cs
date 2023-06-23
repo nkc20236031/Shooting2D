@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour {
@@ -49,9 +48,11 @@ public class EnemyController : MonoBehaviour {
         GameObject obj = collision.gameObject;
         if (obj.tag == "Player") {
             //敵に当たったら-1000km減らす
-            GameDirector.kyori -= 1000;
+            GameDirector.kyori -= 500;
+            GameDirector.hp -= 5;
 
             //消去時にエフェクトを出す
+            Explosion.transform.localScale = new Vector3(2f, 2f, 0);
             Instantiate(Explosion, transform.localPosition, Quaternion.identity);
 
             //何か他のオブジェクトと重なったら消去
@@ -64,6 +65,7 @@ public class EnemyController : MonoBehaviour {
                 GameDirector.kyori += 200;
 
                 //消去時にエフェクトを出す
+                Explosion.transform.localScale = new Vector3(2f, 2f, 0);
                 Instantiate(Explosion, transform.localPosition, Quaternion.identity);
 
                 //何か他のオブジェクトと重なったら消去
