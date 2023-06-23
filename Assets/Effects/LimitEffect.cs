@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Strength : MonoBehaviour {
+public class LimitEffect : MonoBehaviour {
     GameObject player;
     float limit;
     float delta;

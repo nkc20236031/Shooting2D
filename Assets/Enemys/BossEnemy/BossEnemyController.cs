@@ -18,7 +18,7 @@ public class BossEnemyController : MonoBehaviour {
         GameObject obj = collision.gameObject;
         if (obj.tag == "Player") {
             GameDirector.kyori -= 1500;
-            GameDirector.hp -= 15;
+            GameDirector.hp -= 25;
         } else if (obj.tag == "MyShot") {
             attack++;
             Destroy(obj);

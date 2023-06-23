@@ -7,7 +7,7 @@ public class EnemyGenerator : MonoBehaviour {
     [SerializeField] GameObject aEnemyPre;
     [SerializeField] GameObject BossEnemyPre;
     GameObject go;
-    float span = 1.5f;                          //“G‚ðo‚·ŠÔŠui•bj‚ð•Û‘¶‚·‚é•Ï”
+    float span = 1f;                            //“G‚ðo‚·ŠÔŠui•bj‚ð•Û‘¶‚·‚é•Ï”
     float delta = 0;                            //Œo‰ßŽžŠÔŒvŽZ—p
     int random;
     bool boss;
@@ -34,7 +34,7 @@ public class EnemyGenerator : MonoBehaviour {
             go.transform.position = new Vector3(10, py, 0);
 
             //“G‚ðo‚·ŠÔŠu‚ð™X‚É’Z‚­‚·‚é
-            span -= (span > 0.25f)? 0.01f : 0f;
+            span -= (span > 0.5f)? 0.01f : 0f;
         }
 
         if (GameDirector.kyori > 10000 && boss == false) {

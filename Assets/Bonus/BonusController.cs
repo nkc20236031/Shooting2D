@@ -4,18 +4,23 @@ using UnityEngine;
 
 public class BonusController : MonoBehaviour {
     public Speed Speedup;
-    public Strength Strengthup;
+    public LimitEffect Strengthup;
+    public LimitEffect Heeling;
+    [SerializeField] Sprite Red;
+    [SerializeField] Sprite Green;
+    [SerializeField] Sprite Blue;
+    SpriteRenderer image;
     int random;
     float speed;
 
     void Start() {
-        //マテリアルカラーの変更
-        Material mat = GetComponent<Renderer>().material;
-        Color[] col = { Color.red, Color.green, Color.blue };
-        random = Random.Range(0, 3);
-        mat.color = col[random];
+        //画像の変更
+        image = GetComponent<SpriteRenderer>();
+        Sprite[] sp = {Red, Green, Blue};
+        random = Random.Range(0, sp.Length);
+        image.sprite = sp[random];
 
-        speed = 5f;
+        speed = 3f;
     }
 
     void Update() {
@@ -37,14 +42,15 @@ public class BonusController : MonoBehaviour {
                 PlayerController.level += (PlayerController.level == 12) ? 0 : 1;
                 Instantiate(Strengthup, transform.localPosition, Quaternion.identity);
                 break;
-            case 1:     //スピードUP
-                PlayerController.speed = 15;
-                Instantiate(Speedup, transform.localPosition, Quaternion.identity);
-                break;
-            case 2:     //性能ダウン＆hp回復
+            case 1:     //性能ダウン＆hp回復
                 PlayerController.level -= (PlayerController.level == 0) ? 0 : 1;
                 PlayerController.speed = 10;
                 GameDirector.hp += 10;
+                Instantiate(Heeling, transform.localPosition, Quaternion.identity);
+                break;
+            case 2:     //スピードUP
+                PlayerController.speed = 15;
+                Instantiate(Speedup, transform.localPosition, Quaternion.identity);
                 break;
         }
     }

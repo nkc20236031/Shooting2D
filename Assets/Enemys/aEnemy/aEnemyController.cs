@@ -27,7 +27,11 @@ public class aEnemyController : MonoBehaviour {
                 case "Player":
                     //敵に当たったら-1000km減らす
                     GameDirector.kyori -= 1000;
-                    GameDirector.hp -= 10;
+                    GameDirector.hp -= 20;
+
+                    //消去時にエフェクトを出す
+                    Explosion.transform.localScale = new Vector3(2f, 2f, 0);
+                    Instantiate(Explosion, transform.localPosition, Quaternion.identity);
 
                     Destroy(gameObject);
                     break;

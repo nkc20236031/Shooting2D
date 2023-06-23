@@ -49,7 +49,7 @@ public class EnemyController : MonoBehaviour {
         if (obj.tag == "Player") {
             //敵に当たったら-1000km減らす
             GameDirector.kyori -= 500;
-            GameDirector.hp -= 5;
+            GameDirector.hp -= 10;
 
             //消去時にエフェクトを出す
             Explosion.transform.localScale = new Vector3(2f, 2f, 0);
