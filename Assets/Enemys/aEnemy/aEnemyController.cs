@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class aEnemyController : MonoBehaviour {
     public EffectController Explosion;
+    GameDirector gd;
+
     [SerializeField] GameObject EnemyShot;
     GameObject player;
+
     int attack;
 
     void Start() {
@@ -13,6 +16,8 @@ public class aEnemyController : MonoBehaviour {
         attack = 0;
 
         Destroy(gameObject, 10f);
+
+        gd = GameObject.Find("GameDirector").GetComponent<GameDirector>();
     }
 
     void Update() {
@@ -25,9 +30,9 @@ public class aEnemyController : MonoBehaviour {
         if (obj.tag == "Player" || obj.tag == "MyShot") {
             switch (obj.tag) {
                 case "Player":
-                    //敵に当たったら-1000km減らす
-                    GameDirector.kyori -= 1000;
-                    GameDirector.hp -= 20;
+                    //敵に当たったら-1000減らす
+                    gd.Score -= 1000;
+                    gd.HP -= 20;
 
                     //消去時にエフェクトを出す
                     Explosion.transform.localScale = new Vector3(2f, 2f, 0);
@@ -47,8 +52,8 @@ public class aEnemyController : MonoBehaviour {
                         //何か他のオブジェクトと重なったら消去
                         Destroy(gameObject);
 
-                        //倒したら+200km増やす
-                        GameDirector.kyori += 500;
+                        //倒したら+500増やす
+                        gd.Score += 500;
                     }
                     break;
             }

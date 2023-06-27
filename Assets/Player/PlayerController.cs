@@ -6,20 +6,37 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour {
     [SerializeField] GameObject myShot;
     [SerializeField] Text shotLevel;
+
     Animator anim;                  //アニメーターコンポーネントの情報を保存する変数
     Vector3 dir = Vector3.zero;     //移動方向を保存する変数
-    public static float speed;
-    public static int level;
+
     float span;
     float delta;
+
+    int level;
+    float speed;
+
+    public int Level {
+        get { return level; }
+        set { 
+            level = value;
+            level = Mathf.Clamp(level, 0, 12);
+        }
+    }
+
+    public float Speed {
+        get { return speed; }
+        set { speed = value; }
+    }
 
     void Start() {
         //アニメーターコンポーネントの情報を保存
         anim = GetComponent<Animator>();
-        speed = 10f;
-        level = 0;
         span = 0.25f;
         delta = 0;
+
+        speed = 10f;
+        level = 0;
     }
 
     void Update() {
@@ -34,7 +51,7 @@ public class PlayerController : MonoBehaviour {
 
         //弾を生成する
         delta += Time.deltaTime;
-        if (delta > span && Input.GetKey(KeyCode.Z)) {
+        if (delta > span && Input.GetButton("Shot")) {
             delta = 0f;
             //レベルによって出す弾数
             for (int i = -level; i < level + 1; i++) {

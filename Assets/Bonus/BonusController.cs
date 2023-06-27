@@ -6,10 +6,14 @@ public class BonusController : MonoBehaviour {
     public Speed Speedup;
     public LimitEffect Strengthup;
     public LimitEffect Heeling;
+    PlayerController pc;
+    GameDirector gd;
+
     [SerializeField] Sprite Red;
     [SerializeField] Sprite Green;
     [SerializeField] Sprite Blue;
     SpriteRenderer image;
+
     int random;
     float speed;
 
@@ -21,6 +25,9 @@ public class BonusController : MonoBehaviour {
         image.sprite = sp[random];
 
         speed = 3f;
+
+        pc = GameObject.Find("Player").GetComponent<PlayerController>();
+        gd = GameObject.Find("GameDirector").GetComponent<GameDirector>(); ;
     }
 
     void Update() {
@@ -39,17 +46,16 @@ public class BonusController : MonoBehaviour {
     void bonus(int num) {
         switch (num) {
             case 0:     //ショットUP
-                PlayerController.level += (PlayerController.level == 12) ? 0 : 1;
+                pc.Level++;
                 Instantiate(Strengthup, transform.localPosition, Quaternion.identity);
                 break;
             case 1:     //性能ダウン＆hp回復
-                PlayerController.level -= (PlayerController.level == 0) ? 0 : 1;
-                PlayerController.speed = 10;
-                GameDirector.hp += 10;
+                gd.HP += 25;
+                pc.Level--;
                 Instantiate(Heeling, transform.localPosition, Quaternion.identity);
                 break;
             case 2:     //スピードUP
-                PlayerController.speed = 15;
+                pc.Speed = 15;
                 Instantiate(Speedup, transform.localPosition, Quaternion.identity);
                 break;
         }

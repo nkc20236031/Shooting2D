@@ -9,7 +9,7 @@ public class TitleDirector : MonoBehaviour {
 
     void Start() {
         //スコアの表示
-        string ScoreRec = GameDirector.kyori.ToString("D6");
+        string ScoreRec = ScoreDirector.GameScore.ToString("D6");
         Score.text = (
             $"Score\n" +
             $"{ScoreRec}"

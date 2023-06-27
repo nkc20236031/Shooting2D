@@ -159,7 +159,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 600, y: 150}
+  m_SizeDelta: {x: 598, y: 150}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &195425835
 MonoBehaviour:
@@ -182,7 +182,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: -935427005, guid: 835b66a83e1339f4da73dcea6ebb7e6d, type: 3}
-  m_Type: 3
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
@@ -485,7 +485,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 600, y: 150}
+  m_SizeDelta: {x: 601, y: 151}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1055194462
 MonoBehaviour:
@@ -556,7 +556,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   EnemyPre: {fileID: 8546898638648515846, guid: ef56582306d90f74a8e023f381033694, type: 3}
   aEnemyPre: {fileID: 8546898638648515846, guid: 5124a443548ea2143ba338a4bb16ce48, type: 3}
-  BossEnemyPre: {fileID: 8221986443808039856, guid: 12add90e5df424940a628f978ace7cb3, type: 3}
+  BossEnemyPre: {fileID: 3914459589486573785, guid: 84ac0db8b44f7c74997133e3278bbb42, type: 3}
 --- !u!4 &1320894609
 Transform:
   m_ObjectHideFlags: 0
@@ -999,7 +999,7 @@ GameObject:
   - component: {fileID: 2041923730}
   - component: {fileID: 2041923731}
   m_Layer: 5
-  m_Name: Kyori
+  m_Name: Score
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1112,7 +1112,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bonus: {fileID: 3313778031809534523, guid: dcf139fd358966e4da93565617082cb5, type: 3}
   HpBar: {fileID: 1055194462}
-  kyoriLabel: {fileID: 2041923730}
+  ScoreLabel: {fileID: 2041923730}
 --- !u!4 &2070711740
 Transform:
   m_ObjectHideFlags: 0

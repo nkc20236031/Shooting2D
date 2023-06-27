@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MyShotController : MonoBehaviour {
-    public EffectController Col;
+    public EffectController Collision;
+
     float speed;
 
     void Start () {
@@ -17,10 +18,10 @@ public class MyShotController : MonoBehaviour {
         transform.position += transform.up * speed * Time.deltaTime;
     }
     
-    private void OnTriggerEnter2D(Collider2D collision) {
+    void OnTriggerEnter2D(Collider2D collision) {
         GameObject obj = collision.gameObject;
         if (obj.tag == "Enemy") {
-            Instantiate(Col, transform.localPosition, Quaternion.identity);
+            Instantiate(Collision, transform.localPosition, Quaternion.identity);
         }
     }
 }

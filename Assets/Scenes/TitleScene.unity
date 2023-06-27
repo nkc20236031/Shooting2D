@@ -353,7 +353,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 70
+    m_FontSize: 45
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -364,9 +364,15 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "Shooting2D\n\u8FFD\u52A0\u8981\u7D20\nZ\u30AD\u30FC\u3067\u5F3E\u3092\u6253\u3064\n\u6575\u306E\u52D5\u304D\u306B\u5909\u5316\n\u6575\u5F3E\u306F\u81EA\u30AD\u30E3\u30E9\u306B\u5411\u304B\u3063\u3066\u767A\u5C04\n\u6575\u3092\u5012\u3059
-    +200km\n\u6575\u3068\u5F53\u305F\u308B -1000km\n\u6575\u5F3E\u3068\u5F53\u305F\u308B
-    -500km\n\u3007\u8D64\u3000\u30B7\u30E7\u30C3\u30C8UP\n\u3007\u7DD1\u3000\u30B9\u30D4\u30FC\u30C9UP\n\u3007\u9752\u3000\u6027\u80FD\u30C0\u30A6\u30F3"
+  m_Text: "\u64CD\u4F5C\uFF1A\r\n\u79FB\u52D5\t\t\tWASD or \u77E2\u5370\u30AD\u30FC\n\u5F3E\u6253\u3061\u3000\tZ\u30AD\u30FC\n\r\n\u30B9\u30B3\u30A2\uFF1A\r
+    \u6BCE\u79D2+60\n\u30DC\u30B9\u3092\u5012\u3059\t\t\tScore: +5000\r\n\u5F37\u5316\u6575\u3092\u5012\u3059\t\tScore:
+    +500, \r\n\u6575\u3092\u5012\u3059 \t\t\t\tScore: +200\r\n\r\n\u30DC\u30B9\u3068\u5F53\u305F\u308B\t\tScore:
+    -1500, \tHP: -25\r\n\u5F37\u5316\u6575\u3068\u5F53\u305F\u308B\tScore: -1000,
+    \tHP: -20\r\n\u6575\u3068\u5F53\u305F\u308B\t\t\tScore: -500, \tHP: -10\r\n\r\n\u30DC\u30B9\u5F3E\u3068\u5F53\u305F\u308B\tScore:
+    -750, \tHP: -2.5\r\n\u6575\u5F3E\u3068\u5F53\u305F\u308B\t\tScore: -500, \tHP:
+    -5\r\n\r\n\u30A2\u30A4\u30C6\u30E0\uFF1A\r\n\u3007\u8D64\u3000\u30B7\u30E7\u30C3\u30C8\u30EC\u30D9\u30EB+1\uFF08\u6700\u592712\uFF09\n\u3007\u7DD1\u3000HP\u56DE\u5FA9
+    & \u30B7\u30E7\u30C3\u30C8\u30EC\u30D9\u30EB-1\r\n\u3007\u9752\u3000\uFF15\u79D2\u9593\u79FB\u52D5\u901F\u5EA6
+    & \u304C1.5\u500D"
 --- !u!222 &1558438815
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -455,7 +461,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 449, y: 146}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1831170712

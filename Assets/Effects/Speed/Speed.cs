@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Speed : MonoBehaviour {
+    PlayerController pc;
+
     GameObject player;
+
     float limit;
     float delta;
 
@@ -12,6 +15,8 @@ public class Speed : MonoBehaviour {
 
         limit = 5f;
         delta = 0;
+
+        pc = GameObject.Find("Player").GetComponent<PlayerController>();
     }
 
     void Update() {
@@ -21,7 +26,7 @@ public class Speed : MonoBehaviour {
         delta += Time.deltaTime;
         if (delta > limit) {
             delta = 0;
-            PlayerController.speed = 10;
+            pc.Speed = 10;
             Destroy(gameObject);
         }
     }

@@ -3,17 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyGenerator : MonoBehaviour {
+    GameDirector gd;
+    GameObject go;
+
     [SerializeField] GameObject EnemyPre;       //敵のプレハブを保存する変数
     [SerializeField] GameObject aEnemyPre;
     [SerializeField] GameObject BossEnemyPre;
-    GameObject go;
+
+    int random;
     float span = 1f;                            //敵を出す間隔（秒）を保存する変数
     float delta = 0;                            //経過時間計算用
-    int random;
     bool boss;
 
     void Start () {
         boss = false;
+
+        gd = GameObject.Find("GameDirector").GetComponent<GameDirector>();
     }
 
     void Update() {
@@ -37,7 +42,7 @@ public class EnemyGenerator : MonoBehaviour {
             span -= (span > 0.5f)? 0.01f : 0f;
         }
 
-        if (GameDirector.kyori > 10000 && boss == false) {
+        if (gd.Score > 15000 && boss == false) {
             boss = true;
             go = Instantiate(BossEnemyPre);
             go.transform.position = new Vector3(12, 0, 0);
