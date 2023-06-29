@@ -353,7 +353,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 45
+    m_FontSize: 44
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -364,15 +364,17 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\u64CD\u4F5C\uFF1A\r\n\u79FB\u52D5\t\t\tWASD or \u77E2\u5370\u30AD\u30FC\n\u5F3E\u6253\u3061\u3000\tZ\u30AD\u30FC\n\r\n\u30B9\u30B3\u30A2\uFF1A\r
-    \u6BCE\u79D2+60\n\u30DC\u30B9\u3092\u5012\u3059\t\t\tScore: +5000\r\n\u5F37\u5316\u6575\u3092\u5012\u3059\t\tScore:
-    +500, \r\n\u6575\u3092\u5012\u3059 \t\t\t\tScore: +200\r\n\r\n\u30DC\u30B9\u3068\u5F53\u305F\u308B\t\tScore:
-    -1500, \tHP: -25\r\n\u5F37\u5316\u6575\u3068\u5F53\u305F\u308B\tScore: -1000,
-    \tHP: -20\r\n\u6575\u3068\u5F53\u305F\u308B\t\t\tScore: -500, \tHP: -10\r\n\r\n\u30DC\u30B9\u5F3E\u3068\u5F53\u305F\u308B\tScore:
+  m_Text: "\u5236\u9650\u6642\u9593300\u79D2\n\u64CD\u4F5C\uFF1A\r\n\u79FB\u52D5\t\t\tWASD
+    or \u77E2\u5370\u30AD\u30FC\n\u5F3E\u6253\u3061\u3000\tZ\u30AD\u30FC\n\r\n\u30B9\u30B3\u30A2\uFF1A\r
+    1\u79D2\u9593 +60, \u521D\u671FHP: 100\n\u30DC\u30B9\u3092\u5012\u3059\t\t\tScore:
+    +5000\r\n\u5F37\u5316\u6575\u3092\u5012\u3059\t\tScore: +500, \r\n\u6575\u3092\u5012\u3059
+    \t\t\t\tScore: +200\r\n\r\n\u30DC\u30B9\u3068\u5F53\u305F\u308B\t\tScore: -1500,
+    \tHP: -25\r\n\u5F37\u5316\u6575\u3068\u5F53\u305F\u308B\tScore: -1000, \tHP:
+    -20\r\n\u6575\u3068\u5F53\u305F\u308B\t\t\tScore: -500, \tHP: -10\r\n\r\n\u30DC\u30B9\u5F3E\u3068\u5F53\u305F\u308B\tScore:
     -750, \tHP: -2.5\r\n\u6575\u5F3E\u3068\u5F53\u305F\u308B\t\tScore: -500, \tHP:
     -5\r\n\r\n\u30A2\u30A4\u30C6\u30E0\uFF1A\r\n\u3007\u8D64\u3000\u30B7\u30E7\u30C3\u30C8\u30EC\u30D9\u30EB+1\uFF08\u6700\u592712\uFF09\n\u3007\u7DD1\u3000HP\u56DE\u5FA9
-    & \u30B7\u30E7\u30C3\u30C8\u30EC\u30D9\u30EB-1\r\n\u3007\u9752\u3000\uFF15\u79D2\u9593\u79FB\u52D5\u901F\u5EA6
-    & \u304C1.5\u500D"
+    & \u30B7\u30E7\u30C3\u30C8\u30EC\u30D9\u30EB-1\r\n\u3007\u9752\u3000\uFF15\u79D2\u9593
+    \u79FB\u52D5\u901F\u5EA61.5\u500D \uFF0B \u5F3E\u306E\u767A\u5C04\u30FB\u79FB\u52D5\u901F\u5EA62\u500D"
 --- !u!222 &1558438815
 CanvasRenderer:
   m_ObjectHideFlags: 0

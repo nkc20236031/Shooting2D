@@ -7,7 +7,7 @@ public class Speed : MonoBehaviour {
 
     GameObject player;
 
-    float limit;
+    float limit;        //Žc‚èŽžŠÔ‚ð•Û‘¶‚·‚é•Ï”
     float delta;
 
     void Start() {
@@ -22,11 +22,13 @@ public class Speed : MonoBehaviour {
     void Update() {
         transform.position = player.transform.position;
 
-        //5•bŠÔƒXƒs[ƒhUP
+        //5•bŠÔˆÚ“®‘¬“x1.5”{ + ’e‘¬“x2”{
         delta += Time.deltaTime;
         if (delta > limit) {
             delta = 0;
             pc.Speed = 10;
+            pc.MyShotSpan = 0.25f;
+            pc.MyShotSpeed = 10;
             Destroy(gameObject);
         }
     }

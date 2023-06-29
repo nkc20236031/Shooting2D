@@ -10,11 +10,12 @@ public class PlayerController : MonoBehaviour {
     Animator anim;                  //アニメーターコンポーネントの情報を保存する変数
     Vector3 dir = Vector3.zero;     //移動方向を保存する変数
 
-    float span;
     float delta;
 
-    int level;
-    float speed;
+    int level;                      //弾のレベルを保存する変数
+    float speed;                    //プレイヤーの移動速度を保存する変数
+    float span;                     //弾の召喚時間間隔を保存する変数
+    float shotSpeed;                //弾の速度を保存する変数
 
     public int Level {
         get { return level; }
@@ -29,18 +30,29 @@ public class PlayerController : MonoBehaviour {
         set { speed = value; }
     }
 
+    public float MyShotSpan {
+        get { return span; }
+        set { span = value; }
+    }
+
+    public float MyShotSpeed {
+        get { return shotSpeed; }
+        set { shotSpeed = value; }
+    }
+
     void Start() {
         //アニメーターコンポーネントの情報を保存
         anim = GetComponent<Animator>();
+
         span = 0.25f;
         delta = 0;
-
+        shotSpeed = 10;
         speed = 10f;
         level = 0;
     }
 
     void Update() {
-        //レベル変更
+        //弾レベル変更
         if (Input.GetKeyDown(KeyCode.C)) {
             level++;
             if (level == 13) {
@@ -65,6 +77,7 @@ public class PlayerController : MonoBehaviour {
                 //現在地と角度をセット
                 Instantiate(myShot, p, rot);
             }
+            SeManager.Instance.Play("se_chun1");
         }
 
         //移動方向をセット

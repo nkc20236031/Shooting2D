@@ -8,13 +8,13 @@ public class EnemyController : MonoBehaviour {
     
     Vector3 dir = Vector3.zero;                 //移動方向
 
-    int attack;
-    int random;
+    int enemyHp;                                //エネミーの体力
+    int random;                                 //エネミーの種類
     float speed;                                //移動速度
     float rad;
 
     void Start() {
-        attack = 0;
+        enemyHp = 0;
         speed = 5f;
         rad = Time.time;
 
@@ -43,9 +43,12 @@ public class EnemyController : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D collision) {
         GameObject obj = collision.gameObject;
         if (obj.tag == "Player") {
-            //敵に当たったら-500減らす
+            //敵に当たったらScore: -500, HP: -10減らす
             gd.Score -= 500;
             gd.HP -= 10;
+
+            //SE
+            SeManager.Instance.Play("se_baaan1");
 
             //消去時にエフェクトを出す
             Explosion.transform.localScale = new Vector3(2f, 2f, 0);
@@ -54,12 +57,15 @@ public class EnemyController : MonoBehaviour {
             //何か他のオブジェクトと重なったら消去
             Destroy(gameObject);
         } else if (obj.tag == "MyShot") {
-            attack++;
+            enemyHp++;
             Destroy(obj);
-            if (attack == 3) {
-                //倒したら+200増やす
+            if (enemyHp == 3) {
+                //倒したらScore: +200増やす
                 gd.Score += 200;
 
+                //SE
+                SeManager.Instance.Play("se_baaan1");
+                
                 //消去時にエフェクトを出す
                 Explosion.transform.localScale = new Vector3(2f, 2f, 0);
                 Instantiate(Explosion, transform.localPosition, Quaternion.identity);

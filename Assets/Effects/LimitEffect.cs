@@ -5,7 +5,7 @@ using UnityEngine;
 public class LimitEffect : MonoBehaviour {
     GameObject player;
 
-    float limit;
+    float limit;        //c‚èŠÔ‚ğ•Û‘¶‚·‚é•Ï”
     float delta;
 
     void Start() {
@@ -18,6 +18,7 @@ public class LimitEffect : MonoBehaviour {
 void Update() {
     transform.position = player.transform.position;
 
+    //limit•bŒã‚ÉÁ–Å
     delta += Time.deltaTime;
     if (delta > limit) {
         delta = 0;

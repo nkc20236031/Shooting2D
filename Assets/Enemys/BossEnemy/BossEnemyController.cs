@@ -10,14 +10,14 @@ public class BossEnemyController : MonoBehaviour {
     GameObject player;
     Vector3 dir = Vector3.zero;
 
-    int attack;
+    int BossHP;                             //ボスの体力
     float speed;                            //移動速度
     float rad;
-    float span;
+    float span;                             //ボス弾の召喚時間の間隔
     float delta;
     
     void Start() {
-        attack = 0;
+        BossHP = 0;
         speed = 5f;
         rad = Time.time;
         span = 0.5f;
@@ -31,6 +31,7 @@ public class BossEnemyController : MonoBehaviour {
     }
 
     void Update() {
+        //移動
         dir.y = Mathf.Sin(rad + Time.time * speed);
         transform.position = Vector3.MoveTowards(transform.position, player.transform.position + new Vector3(7, dir.y, 0), speed * Time.deltaTime);
 
@@ -60,17 +61,23 @@ public class BossEnemyController : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D collision) {
         GameObject obj = collision.gameObject;
-        if (obj.tag == "Player") {
+        if (obj.tag == "Player") {              //プレイヤーと当たる
+            //プレイヤーのScore: -1500, HP: -25
             gd.Score -= 1500;
             gd.HP -= 25;
-        } else if (obj.tag == "MyShot") {
-            attack++;
+        } else if (obj.tag == "MyShot") {       //プレイヤーの弾と当たる
+            BossHP++;
             Destroy(obj);
-            if (attack == 300) {
+            if (BossHP == 300) {
+                //Score: +5000
+                gd.Score += 5000;
+                
+                //SE
+                SeManager.Instance.Play("se_bomb2-1");
+
+                //エフェクト
                 Explosion.transform.localScale = new Vector3(3f, 3f, 0);
                 Instantiate(Explosion, transform.localPosition, Quaternion.identity);
-                
-                gd.Score += 5000;
                 
                 Destroy(gameObject);
             }

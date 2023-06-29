@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BonusController : MonoBehaviour {
-    public Speed Speedup;
-    public LimitEffect Strengthup;
+    public Speed SpeedUp;
+    public LimitEffect StrengthUp;
     public LimitEffect Heeling;
     PlayerController pc;
     GameDirector gd;
@@ -27,10 +27,11 @@ public class BonusController : MonoBehaviour {
         speed = 3f;
 
         pc = GameObject.Find("Player").GetComponent<PlayerController>();
-        gd = GameObject.Find("GameDirector").GetComponent<GameDirector>(); ;
+        gd = GameObject.Find("GameDirector").GetComponent<GameDirector>();
     }
 
     void Update() {
+        //落下速度
         transform.position += Vector3.down * speed * Time.deltaTime;
     }
 
@@ -45,19 +46,32 @@ public class BonusController : MonoBehaviour {
     //色別効果
     void bonus(int num) {
         switch (num) {
-            case 0:     //ショットUP
+            case 0:
+                //弾レベル＋１
                 pc.Level++;
-                Instantiate(Strengthup, transform.localPosition, Quaternion.identity);
+
+                //Effect
+                Instantiate(StrengthUp, transform.localPosition, Quaternion.identity);
                 break;
-            case 1:     //性能ダウン＆hp回復
+            case 1:
+                //体力＋２５、弾レベルー１
                 gd.HP += 25;
                 pc.Level--;
+
+                //Effecct
                 Instantiate(Heeling, transform.localPosition, Quaternion.identity);
                 break;
-            case 2:     //スピードUP
+            case 2:
+                //プレイヤー移動速度1.5倍、プレイヤー弾移動速度＆召喚間隔2倍
                 pc.Speed = 15;
-                Instantiate(Speedup, transform.localPosition, Quaternion.identity);
+                pc.MyShotSpan = 0.125f;
+                pc.MyShotSpeed = 20;
+
+                //Effect
+                Instantiate(SpeedUp, transform.localPosition, Quaternion.identity);
                 break;
         }
+        //SE
+        SeManager.Instance.Play("se_power_up1");
     }
 }

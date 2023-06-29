@@ -6,7 +6,7 @@ public class BossEnemyShotController : MonoBehaviour {
     public EffectController Col;
     GameDirector gd;
     
-    float speed;
+    float speed;            //“G’e‚Ì‘¬“x
 
     void Start () {
         speed = 10f;
@@ -24,10 +24,14 @@ public class BossEnemyShotController : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D collision) {
         GameObject obj = collision.gameObject;
         if (obj.tag == "Player") {
-            //“G’e‚É“–‚½‚Á‚½‚ç-750
+            //“G’e‚É“–‚½‚Á‚½‚çScore: -750, HP: -2.5
             gd.Score -= 750;
             gd.HP -= 2.5f;
 
+            //SE
+            SeManager.Instance.Play("se_explode11");
+
+            //Effect
             Instantiate(Col, transform.localPosition, Quaternion.identity);
             
             Destroy(gameObject);
