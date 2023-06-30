@@ -5,22 +5,37 @@ using UnityEngine;
 public class BossEnemyShotController : MonoBehaviour {
     public EffectController Col;
     GameDirector gd;
-    
-    float speed;            //“G’e‚Ì‘¬“x
+
+    float speed;
+    float limit;
+    float delta;
+    bool check;
 
     void Start () {
-        speed = 10f;
-
-        Destroy(gameObject, 2f);
+        Destroy(gameObject, 10);
 
         gd = GameObject.Find("GameDirector").GetComponent<GameDirector>();
+
+        speed = 5f;
+        limit = 5;
+        delta = 0;
+        check = true;
     }
 
     void Update() {
+        if (gd.Attack && check) {
+            delta += Time.deltaTime;
+            if (delta > limit) {
+                delta = 0;
+                check = false;
+                transform.eulerAngles += new Vector3(0, 0, 180);
+            }
+        }
+
         //ˆÚ“®
         transform.position += transform.up * speed * Time.deltaTime;
     }
-    
+
     void OnTriggerEnter2D(Collider2D collision) {
         GameObject obj = collision.gameObject;
         if (obj.tag == "Player") {

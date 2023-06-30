@@ -6,7 +6,7 @@ public class BossEnemyController : MonoBehaviour {
     public EffectController Explosion;
     GameDirector gd;
 
-    [SerializeField] GameObject EnemyShot;
+    [SerializeField] GameObject BossEnemyShot;
     GameObject player;
     Vector3 dir = Vector3.zero;
 
@@ -17,6 +17,9 @@ public class BossEnemyController : MonoBehaviour {
     float delta;
     
     void Start() {
+        gd = GameObject.Find("GameDirector").GetComponent<GameDirector>();
+        player = GameObject.Find("Player");
+        
         BossHP = 0;
         speed = 5f;
         rad = Time.time;
@@ -25,9 +28,6 @@ public class BossEnemyController : MonoBehaviour {
 
         Destroy(gameObject, 300f);
 
-        player = GameObject.Find("Player");
-
-        gd = GameObject.Find("GameDirector").GetComponent<GameDirector>(); ;
     }
 
     void Update() {
@@ -53,7 +53,7 @@ public class BossEnemyController : MonoBehaviour {
             rot.eulerAngles = transform.rotation.eulerAngles;
 
             //現在地と角度をセット
-            Instantiate(EnemyShot, p, rot);
+            Instantiate(BossEnemyShot, p, rot);
 
             span = Random.Range(0.5f, 1f);
         }

@@ -54,7 +54,7 @@ public class EnemyGenerator : MonoBehaviour {
             }
 
             //ƒ‰ƒXƒ{ƒX‚Ì¶¬
-            if (Boss == true && gd.Score > 100000) {
+            if (Boss == true && gd.Score > 100000 || gd.Score > 0) {
                 LastBoss = true;
                 go = Instantiate(LastBossEnemyPre);
                 go.transform.position = new Vector3(12, 0, 0);

@@ -28,6 +28,8 @@ public class BonusController : MonoBehaviour {
 
         pc = GameObject.Find("Player").GetComponent<PlayerController>();
         gd = GameObject.Find("GameDirector").GetComponent<GameDirector>();
+
+        Destroy(gameObject, 5f);
     }
 
     void Update() {

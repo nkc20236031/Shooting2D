@@ -18,6 +18,7 @@ public class GameDirector : MonoBehaviour {
     float limit;
     float del;
     bool esc;
+    bool LastBossAttack;
 
     public int Score {
         get { return score; }
@@ -33,6 +34,11 @@ public class GameDirector : MonoBehaviour {
             hp = value;
             hp = Mathf.Clamp(hp, 0, 100);
         }
+    }
+
+    public bool Attack {
+        get { return LastBossAttack; }
+        set { LastBossAttack = value; }
     }
 
     void Start() {
@@ -70,7 +76,7 @@ public class GameDirector : MonoBehaviour {
         if (score < 0) {
             score = 0;
         }
-        score++;
+        score += (score < 999999)? 1:0;
         ScoreLabel.text = ($"Score: {score.ToString("D6")}");
 
         //ボーナスアイテム
