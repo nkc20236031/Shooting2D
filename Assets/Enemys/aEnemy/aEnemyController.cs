@@ -25,8 +25,7 @@ public class aEnemyController : MonoBehaviour {
         transform.position = Vector3.MoveTowards(transform.position, player.transform.position, 4f * Time.deltaTime);
     }
 
-    void OnTriggerEnter2D(Collider2D collision) {
-        GameObject obj = collision.gameObject;
+    void OnTriggerEnter2D(Collider2D obj) {
         if (obj.tag == "Player" || obj.tag == "MyShot") {
             switch (obj.tag) {
                 case "Player":
@@ -45,7 +44,7 @@ public class aEnemyController : MonoBehaviour {
                     break;
                 case "MyShot":
                     attack++;
-                    Destroy(obj);
+                    Destroy(obj.gameObject);
                     //5âÒçUåÇÇ™ìñÇΩÇ¡ÇΩÇÁ
                     if (attack == 5) {
                         //ì|ÇµÇΩÇÁScore: +500ëùÇ‚Ç∑

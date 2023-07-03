@@ -18,14 +18,14 @@ public class MyShotController : MonoBehaviour {
         transform.position += transform.up * msc.MyShotSpeed * Time.deltaTime;
     }
     
-    void OnTriggerEnter2D(Collider2D collision) {
-        GameObject obj = collision.gameObject;
+    void OnTriggerEnter2D(Collider2D obj) {
         //エネミーに当たった場合
         if (obj.tag == "Enemy") {
             //SE
             SeManager.Instance.Play("se_explode11");
 
             //Effect
+            Collision.transform.localScale = new Vector3(1, 1, 0);
             Instantiate(Collision, transform.localPosition, Quaternion.identity);
         }
     }

@@ -9,6 +9,8 @@ public class GameDirector : MonoBehaviour {
     [SerializeField] Image TimeGauge;       //タイムゲージを表示するUI-Imageオブジェクトを保存
     [SerializeField] Image HpBar;           //体力ゲージを表示するUI-Imageオブジェクトを保存
     [SerializeField] Text ScoreLabel;       //スコアを表示するUI-Textオブジェクトを保存
+    [SerializeField] Sprite GreenHPBar;
+    [SerializeField] Sprite RedHPBar;
 
     int score;                              //スコアを保存する変数
     float hp;                               //残りの体力を保存する変数
@@ -18,7 +20,10 @@ public class GameDirector : MonoBehaviour {
     float limit;
     float del;
     bool esc;
+    bool alt;
     bool LastBossAttack;
+    bool debug;
+    bool LastBossSummon;
 
     public int Score {
         get { return score; }
@@ -41,6 +46,16 @@ public class GameDirector : MonoBehaviour {
         set { LastBossAttack = value; }
     }
 
+    public bool DebugMode {
+        get { return debug; }
+        set { debug = value; }
+    }
+
+    public bool Summon {
+        get { return LastBossSummon; }
+        set { LastBossSummon = value; }
+    }
+
     void Start() {
         Application.targetFrameRate = 60;   //フレームレート(60)
 
@@ -49,17 +64,27 @@ public class GameDirector : MonoBehaviour {
         lasttime = 480;
         hp = 100;
         score = 0;
-        limit = 3;
+        limit = 1;
         del = 0;
         esc = false;
+        alt = false;
+        LastBossAttack = false;
+        DebugMode = false;
+        Summon = false;
 
         //BGM
         BgmManager.Instance.Play("bgm_maoudamashii_8bit11");
+        BgmManager.Instance.TargetVolume = 1f;
     }
 
     void Update() {
         //HP
         HpBar.fillAmount = hp / 100;
+        if (HpBar.fillAmount <= 0.2f) {
+            HpBar.sprite = RedHPBar;
+        } else {
+            HpBar.sprite = GreenHPBar;
+        }
 
         //残り時間
         lasttime -= Time.deltaTime;
@@ -67,7 +92,7 @@ public class GameDirector : MonoBehaviour {
 
         //残り時間または体力が０になったらタイトルシーンに移動
         if (hp == 0 || TimeGauge.fillAmount <= 0) {
-            BgmManager.Instance.Stop();
+            BgmManager.Instance.StopImmediately();
             ScoreDirector.GameScore = Score;
             SceneManager.LoadScene("TitleScene");
         }
@@ -88,12 +113,34 @@ public class GameDirector : MonoBehaviour {
             go.transform.position = new Vector3(py, 7, 0);
         }
 
+        //ラスボス召喚
+        if (Input.GetKeyDown(KeyCode.B) && DebugMode) {
+            Summon = true;
+        }
+
+        //オルトキーを押した判定
+        if (Input.GetKeyDown(KeyCode.LeftAlt)) {
+            alt = true;
+        } else if (Input.GetKeyDown(KeyCode.LeftAlt)) {
+            alt = false;
+            del = 0;
+        }
+
         //エスケープキーを押した判定
         if (Input.GetKeyDown(KeyCode.Escape)) {
             esc = true;
         } else if (Input.GetKeyUp(KeyCode.Escape)) {
             esc = false;
             del = 0;
+        }
+
+        //チートモード
+        if (alt) {
+            del += Time.deltaTime;
+            if (del > limit) {
+                del = 0;
+                DebugMode = true;
+            }
         }
 
         //ゲーム終了

@@ -23,7 +23,7 @@ public class BossEnemyController : MonoBehaviour {
         BossHP = 0;
         speed = 5f;
         rad = Time.time;
-        span = 0.5f;
+        span = 0.25f;
         delta = 0;
 
         Destroy(gameObject, 300f);
@@ -59,15 +59,14 @@ public class BossEnemyController : MonoBehaviour {
         }
     }
 
-    void OnTriggerEnter2D(Collider2D collision) {
-        GameObject obj = collision.gameObject;
+    void OnTriggerEnter2D(Collider2D obj) {
         if (obj.tag == "Player") {              //プレイヤーと当たる
             //プレイヤーのScore: -1500, HP: -25
             gd.Score -= 1500;
             gd.HP -= 25;
         } else if (obj.tag == "MyShot") {       //プレイヤーの弾と当たる
             BossHP++;
-            Destroy(obj);
+            Destroy(obj.gameObject);
             if (BossHP == 300) {
                 //Score: +5000
                 gd.Score += 5000;

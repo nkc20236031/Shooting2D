@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CircleShotController : MonoBehaviour {
-    public EffectController Col;
+    public EffectController Collision;
     GameDirector gd;
     
     [SerializeField] GameObject BossEnemyShot;
@@ -35,8 +35,6 @@ public class CircleShotController : MonoBehaviour {
                 Quaternion rot = Quaternion.identity;
                 rot.eulerAngles = transform.rotation.eulerAngles + new Vector3(0, 0, rotate * i);
 
-                gd.Attack = true;
-
                 //åªç›ínÇ∆äpìxÇÉZÉbÉg
                 Instantiate(BossEnemyShot, p, rot);
             }
@@ -47,8 +45,7 @@ public class CircleShotController : MonoBehaviour {
         transform.position += transform.up * speed * Time.deltaTime;
     }
 
-    void OnTriggerEnter2D(Collider2D collision) {
-        GameObject obj = collision.gameObject;
+    void OnTriggerEnter2D(Collider2D obj) {
         if (obj.tag == "Player") {
             //ìGíeÇ…ìñÇΩÇ¡ÇΩÇÁScore: -750, HP: -2.5
             gd.Score -= 1000;
@@ -58,7 +55,8 @@ public class CircleShotController : MonoBehaviour {
             SeManager.Instance.Play("se_explode11");
 
             //Effect
-            Instantiate(Col, transform.localPosition, Quaternion.identity);
+            Collision.transform.localScale = new Vector3(2, 2, 0);
+            Instantiate(Collision, transform.localPosition, Quaternion.identity);
             
             Destroy(gameObject);
         }

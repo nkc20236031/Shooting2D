@@ -188,7 +188,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 11406766, guid: e584c8c7333ab4b2b825ba6ed1554fc1, type: 3}
       propertyPath: MaxAudioSources
-      value: 30
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e584c8c7333ab4b2b825ba6ed1554fc1, type: 3}
@@ -626,7 +626,7 @@ MonoBehaviour:
   EnemyPre: {fileID: 8546898638648515846, guid: ef56582306d90f74a8e023f381033694, type: 3}
   aEnemyPre: {fileID: 8546898638648515846, guid: 5124a443548ea2143ba338a4bb16ce48, type: 3}
   BossEnemyPre: {fileID: 3914459589486573785, guid: 84ac0db8b44f7c74997133e3278bbb42, type: 3}
-  LastBossEnemyPre: {fileID: 2847209871552444364, guid: fe293b06186bfe141aeed088623e2e0d, type: 3}
+  LastBossEnemyPre: {fileID: 9134859743349656897, guid: 387d1970d5beaa246bb8305690941e0d, type: 3}
 --- !u!4 &1320894609
 Transform:
   m_ObjectHideFlags: 0
@@ -821,6 +821,14 @@ PrefabInstance:
     - target: {fileID: 450246, guid: 7521f6f0afaaa4c86afd2d6698303da2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11450246, guid: 7521f6f0afaaa4c86afd2d6698303da2, type: 3}
+      propertyPath: DebugMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11450246, guid: 7521f6f0afaaa4c86afd2d6698303da2, type: 3}
+      propertyPath: CrossFadeRatio
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7521f6f0afaaa4c86afd2d6698303da2, type: 3}
@@ -1382,6 +1390,8 @@ MonoBehaviour:
   TimeGauge: {fileID: 632464057}
   HpBar: {fileID: 1055194462}
   ScoreLabel: {fileID: 2041923730}
+  GreenHPBar: {fileID: -1189883061, guid: 835b66a83e1339f4da73dcea6ebb7e6d, type: 3}
+  RedHPBar: {fileID: -448225194, guid: 2872700a456ef0a4f8cafefe2f354622, type: 3}
 --- !u!4 &2070711740
 Transform:
   m_ObjectHideFlags: 0

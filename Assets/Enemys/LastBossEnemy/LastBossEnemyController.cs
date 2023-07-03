@@ -1,29 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LastBossEnemyController : MonoBehaviour {
     public EffectController Explosion;
     GameDirector gd;
 
     [SerializeField] GameObject Enemy;
-    [SerializeField] GameObject BossEnemyShot;
-
-    Vector3 dir = Vector3.zero;
+    [SerializeField] GameObject bEnemy;
+    [SerializeField] GameObject CircleShot;
 
     int LastBossHP;
-    float rad;
+    int cnt;
     float speed;
     float span1;
     float span2;
+    float span3;
     float delta1;
     float delta2;
+    float delta3;
     float random;
-    float limit1;
-    float limit2;
-    float del1;
-    float del2;
-    bool check1;
+    float limit;
+    float del;
+    bool check;
 
     enum Pattern { StartPat, WayPat, EndPat }
     Pattern nowLBState = Pattern.StartPat;
@@ -34,19 +34,19 @@ public class LastBossEnemyController : MonoBehaviour {
     void Start () {
         gd = GameObject.Find("GameDirector").GetComponent<GameDirector>();
 
-        LastBossHP = 1200;
-        rad = Time.time;
+        LastBossHP = 1500;
+        cnt = 0;
         speed = 7.5f;
         span1 = 2.5f;
-        span2 = 2;
+        span2 = 5;
+        span3 = 0.5f;
         delta1 = 0;
         delta2 = 0;
-        limit1 = 30;
-        limit2 = 3;
-        del1 = 0;
-        del2 = 0;
+        delta3 = 0;
+        limit = 30;
+        del = 0;
         random = Random.Range(-4.25f, 4.25f);
-        check1 = true;
+        check = true;
     }
 
     void Update () {
@@ -65,6 +65,8 @@ public class LastBossEnemyController : MonoBehaviour {
 
     void Spawn() {
         transform.position = Vector3.MoveTowards(transform.position, new Vector3(5, 0, 0), 5 * Time.deltaTime);
+
+        gd.Attack = true;
 
         if (transform.position.x == 5) {
             nowLBState = Pattern.WayPat;
@@ -93,6 +95,8 @@ public class LastBossEnemyController : MonoBehaviour {
     }
 
     void End() {
+        gd.Attack = false;
+
         //Score: +15000
         gd.Score += 15000;
 
@@ -104,6 +108,10 @@ public class LastBossEnemyController : MonoBehaviour {
         Instantiate(Explosion, transform.localPosition, Quaternion.identity);
 
         Destroy(gameObject);
+
+        BgmManager.Instance.StopImmediately();
+        ScoreDirector.GameScore = gd.Score;
+        SceneManager.LoadScene("TitleScene");
     }
 
     private void alWay() {
@@ -122,65 +130,94 @@ public class LastBossEnemyController : MonoBehaviour {
         //弾を生成する
         delta2 += Time.deltaTime;
         if (delta2 > span2) {
-            delta2 = 0f;
+            delta2 = 0;
 
             //大弾
-            BossEnemyShot.transform.localScale = new Vector3(5, 5, 0);
-            BossEnemyShot.transform.position = new Vector3(5, random, 0);
-            Instantiate(BossEnemyShot);
+            CircleShot.transform.position = new Vector3(5, random, 0);
+            CircleShot.transform.eulerAngles = new Vector3(0, 0, 90);
+            CircleShot.transform.localScale = new Vector3(5, 5, 0);
+            Instantiate(CircleShot);
 
             random = Random.Range(-4.25f, 4.25f);
         }
 
         //30秒後攻撃パターン切り替え
-        del1 += Time.deltaTime;
-        if (del1 > limit1) {
-            del1 = 0;
+        del += Time.deltaTime;
+        if (del > limit) {
+            del = 0;
             nowLBAttack = AttackPat.AttackPat2;
         }
     }
 
     void Charge() {
-        if (check1) {
-            delta2 += Time.deltaTime;
-            if (delta2 < span2) {
-                dir.y = Mathf.Sin(rad + Time.time * speed / 2);
-            } else {
-                delta2 = 0;
-                check1 = false;
-            }
-            transform.position += dir.normalized * speed * Time.deltaTime;
+        delta2 += Time.deltaTime;
+        if (delta2 < span2) {
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(5, 0, 0), speed * Time.deltaTime);
+            check = true;
         } else {
-            transform.position = Vector3.MoveTowards(transform.position, transform.position + new Vector3(-5, 0, 0), speed * Time.deltaTime);
-            if (transform.position.x < -10) {
-                transform.position = Vector3.MoveTowards(transform.position, transform.position + new Vector3(5, 0, 0), speed * Time.deltaTime);
-                if (transform.position.x >= 5) {
-                    check1 = true;
-                }
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(-12, 0, 0), speed * Time.deltaTime);
+
+            delta3 += Time.deltaTime;
+            if (delta3 > span3) {
+                delta3 = 0;
+
+                random = Random.Range(0, 360);
+                CircleShot.transform.position = transform.position;
+                CircleShot.transform.eulerAngles = new Vector3(0, 0, random);
+                CircleShot.transform.localScale = new Vector3(5, 5, 0);
+                Instantiate(CircleShot);
+            }
+
+            if (check) {
+                cnt++;
+                check = false;
+            }
+
+            if (transform.position.x <= -12) {
+                delta2 = 0;
             }
         }
 
-        //30秒後攻撃パターン切り替え
-        del1 += Time.deltaTime;
-        if (del1 > limit1) {
-            del1 = 0;
+        //攻撃パターン切り替え
+        if (cnt == 5) {
+            cnt = 0;
+            transform.position = new Vector3(5, 0, 0);
             nowLBAttack = AttackPat.AttackPat3;
         }
     }
 
     void Summon() {
+        delta2 += Time.deltaTime;
+        if (delta2 > span2 - 3) {
+            delta2 = 0;
+            random = Random.Range(0, 7);
+            for (float i = 0; i < 7; i++) {
+                if (i != random) {
+                    bEnemy.transform.position = new Vector3(10, (i * 1.5f) - 4.5f, 0);
+                    Instantiate(bEnemy);
+                } else {
+                    Enemy.transform.position = new Vector3(10, (i * 1.5f) - 4.5f, 0);
+                    Instantiate(Enemy);
+                }
+            }
+        }
 
+        //30秒後攻撃パターン切り替え
+        del += Time.deltaTime;
+        if (del > limit) {
+            del = 0;
+            nowLBAttack = AttackPat.AttackPat1;
+        }
     }
 
-    void OnTriggerEnter2D(Collider2D collision) {
-        GameObject obj = collision.gameObject;
+    void OnTriggerEnter2D(Collider2D obj) {
         if (obj.tag == "Player") {              //プレイヤーと当たる
             //プレイヤーのScore: -1750, HP: -37.5
             gd.Score -= 1750;
             gd.HP -= 37.5f;
         } else if (obj.tag == "MyShot") {       //プレイヤーの弾と当たる
             LastBossHP--;
-            Destroy(obj);
+            Destroy(obj.gameObject);
         }
     }
 }

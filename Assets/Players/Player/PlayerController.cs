@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour {
+    GameDirector gd;
+    
     [SerializeField] GameObject myShot;
     [SerializeField] Text shotLevel;
 
@@ -41,6 +43,8 @@ public class PlayerController : MonoBehaviour {
     }
 
     void Start() {
+        gd = GameObject.Find("GameDirector").GetComponent<GameDirector>();
+
         //アニメーターコンポーネントの情報を保存
         anim = GetComponent<Animator>();
 
@@ -53,7 +57,7 @@ public class PlayerController : MonoBehaviour {
 
     void Update() {
         //弾レベル変更
-        if (Input.GetKeyDown(KeyCode.C)) {
+        if (Input.GetKeyDown(KeyCode.C) && gd.DebugMode) {
             level++;
             if (level == 13) {
                 level = 0;
@@ -87,8 +91,8 @@ public class PlayerController : MonoBehaviour {
 
         //画面内移動制限
         Vector3 pos = transform.position;
-        pos.x = Mathf.Clamp(pos.x, -9f, 9f);
-        pos.y = Mathf.Clamp(pos.y, -5f, 5f);
+        pos.x = Mathf.Clamp(pos.x, -8.2f, 8.2f);
+        pos.y = Mathf.Clamp(pos.y, -4.5f, 4.5f);
         transform.position = pos;
 
         //アニメーション設定

@@ -37,8 +37,7 @@ public class BonusController : MonoBehaviour {
         transform.position += Vector3.down * speed * Time.deltaTime;
     }
 
-    void OnTriggerEnter2D(Collider2D collision) {
-        GameObject obj = collision.gameObject;
+    void OnTriggerEnter2D(Collider2D obj) {
         if (obj.tag == "Player") {
             bonus(random);
             Destroy(gameObject);

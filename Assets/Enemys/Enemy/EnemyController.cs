@@ -32,7 +32,7 @@ public class EnemyController : MonoBehaviour {
         //ˆÚ“®•ûŒü‚ðŒˆ’è
         dir = Vector3.left;
 
-        if (random < 3) {   //ã‰ºˆÚ“®
+        if (random < 3 && gd.Attack == false) {   //ã‰ºˆÚ“®
             dir.y = Mathf.Sin(rad + Time.time * speed);
         }
 
@@ -40,8 +40,7 @@ public class EnemyController : MonoBehaviour {
         transform.position += dir.normalized * speed * Time.deltaTime;
     }
 
-    void OnTriggerEnter2D(Collider2D collision) {
-        GameObject obj = collision.gameObject;
+    void OnTriggerEnter2D(Collider2D obj) {
         if (obj.tag == "Player") {
             //“G‚É“–‚½‚Á‚½‚çScore: -500, HP: -10Œ¸‚ç‚·
             gd.Score -= 500;
@@ -58,7 +57,7 @@ public class EnemyController : MonoBehaviour {
             Destroy(gameObject);
         } else if (obj.tag == "MyShot") {
             enemyHp++;
-            Destroy(obj);
+            Destroy(obj.gameObject);
             if (enemyHp == 3) {
                 //“|‚µ‚½‚çScore: +200‘‚â‚·
                 gd.Score += 200;

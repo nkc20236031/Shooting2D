@@ -7,7 +7,7 @@ public class EnemyGenerator : MonoBehaviour {
     GameObject go;
 
     [SerializeField] GameObject EnemyPre;           //敵のプレハブを保存する変数
-    [SerializeField] GameObject aEnemyPre;          //強化敵のプレハブを保存する変数
+    [SerializeField] GameObject aEnemyPre;          //強化a敵のプレハブを保存する変数
     [SerializeField] GameObject BossEnemyPre;       //ボスのプレハブを保存する変数
     [SerializeField] GameObject LastBossEnemyPre;   //ラスボスのプレハブを保存する変数
 
@@ -54,8 +54,9 @@ public class EnemyGenerator : MonoBehaviour {
             }
 
             //ラスボスの生成
-            if (Boss == true && gd.Score > 100000 || gd.Score > 0) {
+            if (Boss == true && gd.Score > 75000 || gd.Summon) {
                 LastBoss = true;
+                gd.Summon = false;
                 go = Instantiate(LastBossEnemyPre);
                 go.transform.position = new Vector3(12, 0, 0);
             }

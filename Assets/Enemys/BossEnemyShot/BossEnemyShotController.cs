@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BossEnemyShotController : MonoBehaviour {
-    public EffectController Col;
+    public EffectController Collision;
     GameDirector gd;
 
     float speed;
     float limit;
-    float delta;
+    float del;
     bool check;
 
     void Start () {
@@ -18,16 +18,16 @@ public class BossEnemyShotController : MonoBehaviour {
 
         speed = 5f;
         limit = 5;
-        delta = 0;
+        del = 0;
         check = true;
     }
 
     void Update() {
         if (gd.Attack && check) {
-            delta += Time.deltaTime;
-            if (delta > limit) {
-                delta = 0;
-                check = false;
+            del += Time.deltaTime;
+            if (del > limit) {
+                del = 0;
+
                 transform.eulerAngles += new Vector3(0, 0, 180);
             }
         }
@@ -36,8 +36,7 @@ public class BossEnemyShotController : MonoBehaviour {
         transform.position += transform.up * speed * Time.deltaTime;
     }
 
-    void OnTriggerEnter2D(Collider2D collision) {
-        GameObject obj = collision.gameObject;
+    void OnTriggerEnter2D(Collider2D obj) {
         if (obj.tag == "Player") {
             //“G’e‚É“–‚½‚Á‚½‚çScore: -750, HP: -2.5
             gd.Score -= 750;
@@ -47,7 +46,8 @@ public class BossEnemyShotController : MonoBehaviour {
             SeManager.Instance.Play("se_explode11");
 
             //Effect
-            Instantiate(Col, transform.localPosition, Quaternion.identity);
+            Collision.transform.localScale = new Vector3(2, 2, 0);
+            Instantiate(Collision, transform.localPosition, Quaternion.identity);
             
             Destroy(gameObject);
         }

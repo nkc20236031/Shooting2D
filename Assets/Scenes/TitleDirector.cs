@@ -12,15 +12,12 @@ public class TitleDirector : MonoBehaviour {
 
     void Start() {
         esc = false;
-        limit = 3;
+        limit = 1;
         delta = 0;
 
         //スコアの表示
         string ScoreRec = ScoreDirector.GameScore.ToString("D6");
-        Score.text = (
-            $"Score\n" +
-            $"{ScoreRec}"
-        );
+        Score.text = ScoreRec;
     }
 
     void Update() {
